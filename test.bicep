@@ -1,9 +1,10 @@
-@description('Specifies the location for resources.')
+targetScope = 'subscription'
+
+@description('Specifies the location for the initial resource group.')
 param location string = 'West Europe'
 
 resource symbolicname 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-  name: 'AzureDevOps-Project'
-  scope: subscription()
+  name: 'AzureDevOps-Project2'
   location: location
   tags: {
     tagName1: 'test1'
