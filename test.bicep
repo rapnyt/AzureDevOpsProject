@@ -4,7 +4,7 @@ targetScope = 'subscription'
 param location string = 'West Europe'
 
 resource symbolicname 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-  name: 'AzureDevOps-Project2'
+  name: 'AzureDevOps-Project'
   location: location
   tags: {
     tagName1: 'test1'
