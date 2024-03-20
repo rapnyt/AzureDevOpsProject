@@ -5,40 +5,36 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.54.24096",
-      "templateHash": "4462542604894042886"
+      "templateHash": "10237182407812827006"
     }
   },
   "parameters": {
     "location": {
       "type": "string",
-      "defaultValue": "West Europe",
       "metadata": {
         "description": "Specifies the location for the initial resource group."
       }
+    },
+    "names": {
+      "type": "array"
+    },
+    "prefix": {
+      "type": "string"
     }
-  },
-  "variables": {
-    "prefix": "AzureDevOps-Project",
-    "names": [
-      "HUB",
-      "DEV",
-      "TEST",
-      "PROD"
-    ]
   },
   "resources": [
     {
       "copy": {
         "name": "symbolicname",
-        "count": "[length(variables('names'))]"
+        "count": "[length(parameters('names'))]"
       },
       "type": "Microsoft.Resources/resourceGroups",
       "apiVersion": "2022-09-01",
-      "name": "[format('{0}-{1}', variables('prefix'), variables('names')[copyIndex()])]",
+      "name": "[format('{0}-{1}', parameters('prefix'), parameters('names')[copyIndex()])]",
       "location": "[parameters('location')]",
       "tags": {
-        "tagName1": "[variables('prefix')]",
-        "tagName2": "[variables('names')[copyIndex()]]"
+        "tagName1": "[parameters('prefix')]",
+        "tagName2": "[parameters('names')[copyIndex()]]"
       },
       "managedBy": "rapnyt",
       "properties": {}
