@@ -1,33 +1,32 @@
-import * as myImports from './parameters.bicep'
-
+import * as mod from './parameters.bicep'
 module resourceGroup1 './hub_rg.bicep' = {
   name: 'AzureDevOps-Project-HUB'
   params: {
-    location: location
-    tags: tags_hub
+    location: mod.location1
+    tags: mod.tags_HUB
   }
 }
 
 module resourceGroup2 './dev_rg.bicep' = {
   name: 'AzureDevOps-Project-DEV'
   params: {
-    location: location
-    tags: tags_dev
+    location: myImports.location1
+    tags: myImports.tags_DEV
   }
 }
 
 module resourceGroup3 './test_rg.bicep' = {
   name: 'AzureDevOps-Project-TEST'
   params: {
-    location: location
-    tags: tags_test
+    location: myImports.location1
+    tags: myImports.tags_TEST
   }
 }
 
 module resourceGroup4 './prod_rg.bicep' = {
   name: 'AzureDevOps-Project-PROD'
   params: {
-    location: location
-    tags: tags_prod
+    location: myImports.location1
+    tags: myImports.tags_PROD
   }
 }
