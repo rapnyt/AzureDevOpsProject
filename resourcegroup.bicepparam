@@ -6,6 +6,5 @@ param names = [
   'DEV'
   'TEST'
   'PROD'
-  'japciothebest'
 ]
 param prefix = 'AzureDevOps-Project'
