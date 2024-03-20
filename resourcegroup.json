@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.26.54.24096",
+      "templateHash": "4462542604894042886"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "West Europe",
+      "metadata": {
+        "description": "Specifies the location for the initial resource group."
+      }
+    }
+  },
+  "variables": {
+    "prefix": "AzureDevOps-Project",
+    "names": [
+      "HUB",
+      "DEV",
+      "TEST",
+      "PROD"
+    ]
+  },
+  "resources": [
+    {
+      "copy": {
+        "name": "symbolicname",
+        "count": "[length(variables('names'))]"
+      },
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2022-09-01",
+      "name": "[format('{0}-{1}', variables('prefix'), variables('names')[copyIndex()])]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "tagName1": "[variables('prefix')]",
+        "tagName2": "[variables('names')[copyIndex()]]"
+      },
+      "managedBy": "rapnyt",
+      "properties": {}
+    }
+  ]
+}
