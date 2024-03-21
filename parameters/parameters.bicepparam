@@ -19,3 +19,8 @@ param rg_names = [
 ]
 
 param prefix = 'AzureDevOpsProject'
+
+// param storage_name = [
+//   'AzureDevOpsProjectHUB'
+
+// ]
