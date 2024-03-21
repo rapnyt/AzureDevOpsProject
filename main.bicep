@@ -3,7 +3,7 @@ param names array
 param prefix string
 targetScope = 'subscription'
 
-module resourcegroups './resourcegroup.bicep' = {
+module resourcegroups './modules/resourcegroup.bicep' = {
 name: 'resourcegroups'
 params: {
   location:location
