@@ -20,20 +20,15 @@ params: {
 
 module storage './modules/storage.bicep' = [for (rg_name, i) in rg_names :{
 name: storage_name
-// scope: resourceGroup(name)
 scope:resourceGroup(rg_name)
 params: {
   storage_name: '${prefix}${rg_division_subnames[i]}'
   location:location
-  // storage_name: '${prefix}${rg_division_subnames[i]}'
-  // rg_division_subnames:rg_division_subnames[i]
   prefix:prefix
   sku:sku
-  kind:kind
-  
+  kind:kind 
 }
-
 dependsOn:[
-  resourceGroup(rg_name)
+  resourceGroup(resourcegroups[i].name)
 ]
 }]
