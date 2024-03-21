@@ -4,7 +4,7 @@ param location = 'West Europe'
 param sku = 'Standard_LRS'
 param kind = 'StorageV2'
 
-param names = [
+param rg_division_subnames = [
   'HUB'
   'DEV'
   'TEST'
