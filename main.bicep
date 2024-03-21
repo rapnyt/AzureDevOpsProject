@@ -23,6 +23,7 @@ name: storage_name
 // scope: resourceGroup(name)
 scope:resourceGroup(rg_name)
 params: {
+  storage_name: '${prefix}${rg_division_subnames[i]}'
   location:location
   // storage_name: '${prefix}${rg_division_subnames[i]}'
   // rg_division_subnames:rg_division_subnames[i]
