@@ -4,13 +4,14 @@
 param location string
 param prefix string
 param sku string
-param names array
+param rg_division_subnames array
 param kind string
 
 targetScope = 'resourceGroup'
 
-resource storage 'Microsoft.Storage/storageAccounts@2023-01-01' = [for name in names :{
-  name: toLower('${prefix}${name}')
+resource storage 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  // name: toLower('${prefix}${name}')
+  name:prefix
   location: location
   sku: {
     name: sku
@@ -20,4 +21,4 @@ resource storage 'Microsoft.Storage/storageAccounts@2023-01-01' = [for name in n
     tagName1: prefix
   }
   properties: {}
-}]
+}

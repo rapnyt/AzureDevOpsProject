@@ -4,6 +4,7 @@ param rg_division_subnames array
 param prefix string
 param sku string
 param kind string
+param storage_name string
 
 targetScope = 'subscription'
 
@@ -18,12 +19,13 @@ params: {
 
 
 module storage './modules/storage.bicep' = [for (rg_name, i) in rg_names :{
-name: '${prefix}${rg_division_subnames[i]}'
+name: storage_name
 // scope: resourceGroup(name)
 scope:resourceGroup(rg_name)
 params: {
   location:location
-  names:rg_division_subnames
+  // storage_name: '${prefix}${rg_division_subnames[i]}'
+  // rg_division_subnames:rg_division_subnames[i]
   prefix:prefix
   sku:sku
   kind:kind
