@@ -7,7 +7,7 @@ param sku string
 param storage_name string
 param kind string
 
-targetScope = 'resourceGroup'
+// targetScope = 'resourceGroup'
 
 resource storage 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name:toLower(storage_name)

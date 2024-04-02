@@ -17,7 +17,7 @@ params: {
 }
 }]
 
-module storage './modules/storage.bicep' = [for (rg_name, i) in rg_names :{
+module storageaccounts './modules/storage.bicep' = [for (rg_name, i) in rg_names :{
 name: storage_name
 scope:resourceGroup(resourcegroups[i].name)
 params: {

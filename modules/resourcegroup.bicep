@@ -1,6 +1,5 @@
 targetScope = 'subscription'
 
-@description('Specifies the location for the initial resource group.')
 param location string
 param name string
 param prefix string

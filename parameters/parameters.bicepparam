@@ -3,6 +3,8 @@ using '../main.bicep'
 param location = 'West Europe'
 param sku = 'Standard_LRS'
 param kind = 'StorageV2'
+param storage_name = 'AzureDevOpsProjectDefaultName'
+param prefix = 'AzureDevOpsProject'
 
 param rg_division_subnames = [
   'HUB'
@@ -18,7 +20,5 @@ param rg_names = [
   'AzureDevOps-Project-PROD'
 ]
 
-param storage_name = 'AzureDevOpsProjectDefaultName'
 
-param prefix = 'AzureDevOpsProject'
 

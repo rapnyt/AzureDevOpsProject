@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+variables:
+- group: Kraken_test
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: |
+    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+  displayName: 'Install AZ'
+
+- script: |
+    az login --allow-no-subscriptions --service-principal -u $(AZURE_SERVICE_PRINCIPAL_NAME) -p $(AZURE_SECRET) --tenant $(AZURE_TENANT)
+  displayName: 'Login to azure'
+
+- script: |
+    curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
+    chmod +x ./bicep
+    sudo mv ./bicep /usr/local/bin/bicep
+  displayName: 'Install Bicep CLI'
+
+- script: |
+    az deployment create --location WestEurope --template-file ./main.bicep -p ./parameters/parameters.bicepparam
+  displayName: 'Build and publish'
